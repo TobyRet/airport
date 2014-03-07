@@ -15,10 +15,10 @@ class Plane
   end
 
   def take_off
-    self.fly if self.condition? == :sunny
+    self.fly if self.weather_condition? == :sunny
   end
 
-  def land(weather_condition)
+  def land
     self.is_flying = false if self.weather_condition? == :sunny
   end
 
