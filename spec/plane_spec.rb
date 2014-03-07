@@ -1,4 +1,5 @@
-require './lib/plane.rb'
+require './lib/weather'
+require './lib/plane'
 
 describe Plane do
 
@@ -14,31 +15,39 @@ describe Plane do
     expect(plane.fly).to be_true
   end
 
-  it "can take off in sunny weather" do
-    plane.take_off("sunny")
+  xit "can take off in sunny weather" do
+    plane.take_off(:sunny)
     expect(plane.is_flying).to be_true
   end
 
-  it "can't take off in stormy weather" do
-    plane.take_off("stormy")
+  xit "can't take off in stormy weather" do
+    plane.take_off(:stormy)
     expect(plane.is_flying).to be_false
   end
 
-  it "can land in sunny weather" do
+  xit "can land in sunny weather" do
     plane.fly
-    plane.land("sunny")
+    plane.land(:sunny)
     expect(plane.is_flying).to be_false
   end
 
-  it "can't land in stormy weather" do
+  xit "can't land in stormy weather" do
     plane.fly
-    plane.land("stormy")
+    plane.land(:stormy)
+    expect(plane.is_flying).to be_true
+  end
+
+  # Test plane with Weather module
+
+  it "can take off in sunny weather" do
+    weather = double(:weather, {:condition? => :sunny})
+    plane.fly
     expect(plane.is_flying).to be_true
   end
 
   it "can provide its current status (flying or landed)" do
     plane.status
-    expect(plane.status).to eq("Landed")
+    expect(plane.status).to eq(:landed)
   end
 
 end
