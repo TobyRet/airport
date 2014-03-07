@@ -20,4 +20,8 @@ class Airport
     planes << plane
   end
 
+  def undock(plane)
+    planes.delete(plane)
+  end
+
 end

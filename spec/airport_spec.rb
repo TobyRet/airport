@@ -16,4 +16,12 @@ describe Airport do
     expect(airport.planes_count).to eq(1)
   end
 
+  it "can undock planes" do
+    airport.dock(plane)
+    expect(airport.planes_count).to eq(1)
+    airport.undock(plane)
+    expect(airport.planes_count).to eq(0)
+  end
+
+
 end
