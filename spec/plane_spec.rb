@@ -24,6 +24,18 @@ describe Plane do
     expect(plane.is_flying).to be_false
   end
 
+  it "can land in sunny weather" do
+    plane.fly
+    plane.land("sunny")
+    expect(plane.is_flying).to be_false
+  end
+
+  it "can't land in stormy weather" do
+    plane.fly
+    plane.land("stormy")
+    expect(plane.is_flying).to be_true
+  end
+
   it "can provide its current status (flying or landed)" do
     plane.status
     expect(plane.status).to eq("Landed")

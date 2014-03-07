@@ -11,7 +11,11 @@ class Plane
   end
 
   def take_off(weather_condition)
-    self.fly unless weather_condition == "stormy"
+    self.fly if weather_condition == "sunny"
+  end
+
+  def land(weather_condition)
+    self.is_flying = false if weather_condition == "sunny"
   end
 
   def status
