@@ -1,14 +1,17 @@
 class Plane
 
-  attr_accessor :flying
+  attr_accessor :is_flying
 
   def initialize
-    @flying = false
+    @is_flying = false
   end
 
   def fly
-    @flying = true
+    @is_flying = true
   end
 
+  def take_off(weather_condition)
+    weather_condition
+  end
 
 end
