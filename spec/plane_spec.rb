@@ -24,5 +24,9 @@ describe Plane do
     expect(plane.is_flying).to be_false
   end
 
+  it "can provide its current status (flying or landed)" do
+    plane.status
+    expect(plane.status).to eq("Landed")
+  end
 
 end

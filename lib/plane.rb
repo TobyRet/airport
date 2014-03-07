@@ -14,4 +14,8 @@ class Plane
     self.fly unless weather_condition == "stormy"
   end
 
+  def status
+    self.is_flying ? "Flying" : "Landed"
+  end
+
 end
