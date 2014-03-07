@@ -8,4 +8,16 @@ class Airport
     @capacity = options[:capacity] || DEFAULT_CAPACITY
   end
 
+  def planes
+    @planes ||= []
+  end
+
+  def planes_count
+    @planes.count
+  end
+
+  def dock(plane)
+    planes << plane
+  end
+
 end

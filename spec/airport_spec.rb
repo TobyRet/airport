@@ -11,4 +11,9 @@ describe Airport do
     expect(airport.capacity).to eq(100)
   end
 
+  it "can dock planes" do
+    airport.dock(plane)
+    expect(airport.planes_count).to eq(1)
+  end
+
 end
