@@ -15,9 +15,13 @@ describe Plane do
   end
 
   it "can take off in sunny weather" do
-    sunny_weather = double(:weather, {:sunny => true})
-    plane.take_off(sunny_weather)
-    expect(plane.take_off(sunny_weather)).to be_true
+    plane.take_off("sunny")
+    expect(plane.is_flying).to be_true
+  end
+
+  it "can't take off in stormy weather" do
+    plane.take_off("stormy")
+    expect(plane.is_flying).to be_false
   end
 
 

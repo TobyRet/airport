@@ -11,7 +11,7 @@ class Plane
   end
 
   def take_off(weather_condition)
-    weather_condition
+    self.fly unless weather_condition == "stormy"
   end
 
 end
