@@ -15,6 +15,8 @@ describe Plane do
     expect(plane.fly).to be_true
   end
 
+  # Test plane with single weather condition
+
   xit "can take off in sunny weather" do
     plane.take_off(:sunny)
     expect(plane.is_flying).to be_true
@@ -37,7 +39,7 @@ describe Plane do
     expect(plane.is_flying).to be_true
   end
 
-  # Test plane with Weather module
+  # Test plane with random weather condition (Weather module generates random weather condition)
 
   it "can take off in sunny weather" do
     weather = double(:weather, {:condition? => :sunny})
