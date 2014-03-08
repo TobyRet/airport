@@ -11,10 +11,11 @@ describe Airport do
     expect(airport.capacity).to eq(100)
   end
 
-  xit "can check the weather conditions" do
-    weather = double(:weather)
-    expect(aiport.check_conditions(weather)).to eq(:sunny)
-
+  it "can grant a plane permission to land" do
+    expect(airport.planes_count).to eq(0)
+    airport.permission_to_land(plane)
+    expect(airport.planes_count).to eq(1)
   end
+
 
 end

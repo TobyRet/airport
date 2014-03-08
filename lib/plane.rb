@@ -1,8 +1,4 @@
-require_relative 'weather'
-
 class Plane
-
-  include Weather
 
   attr_accessor :is_flying
 
