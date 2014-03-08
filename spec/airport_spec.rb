@@ -41,9 +41,19 @@ describe Airport do
       expect { airport.permission_to_land(plane) }.to raise_error(RuntimeError)
     end
 
+    it "only lets a plane take off only in sunny weather conditions" do
+      weather = double :weather
+      allow(weather).to receive(:forecast) { :sunny }
+      expect(weather.forecast).to eq(:sunny)
+      weather_condition = weather.forecast
+      airport.permission_to_take_off(plane)
+      expect(airport.planes_count).to eq(0)
+    end
+
     def fill_airport(airport)
       airport.capacity.times { airport.permission_to_land(Plane.new) }
     end
+
 
   end
 

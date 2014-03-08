@@ -1,4 +1,8 @@
+require_relative 'weather'
+
 class Airport
+
+  include Weather
 
   DEFAULT_CAPACITY = 100
 
@@ -22,7 +26,7 @@ class Airport
   end
 
   def permission_to_take_off(plane)
-    planes.delete(plane)
+    planes.delete(plane) if weather_conditions == :sunny
   end
 
   def full?
