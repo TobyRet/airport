@@ -11,17 +11,21 @@ describe Airport do
     expect(airport.capacity).to eq(100)
   end
 
-  it "can grant a plane permission to land" do
-    expect(airport.planes_count).to eq(0)
-    airport.permission_to_land(plane)
-    expect(airport.planes_count).to eq(1)
-  end
+  context "taking off and landing" do 
+  
+    it "a plane can land" do
+      expect(airport.planes_count).to eq(0)
+      airport.permission_to_land(plane)
+      expect(airport.planes_count).to eq(1)
+    end
 
-   it "can grant a plane permission to depart" do
-    airport.permission_to_land(plane)
-    expect(airport.planes_count).to eq(1)
-    airport.permission_to_take_off(plane)
-    expect(airport.planes_count).to eq(0)
+     it "a plane can take off" do
+      airport.permission_to_land(plane)
+      expect(airport.planes_count).to eq(1)
+      airport.permission_to_take_off(plane)
+      expect(airport.planes_count).to eq(0)
+    end
+
   end
 
 
