@@ -19,7 +19,7 @@ describe Airport do
       expect(airport.planes_count).to eq(1)
     end
 
-     it "a plane can take off" do
+    it "a plane can take off" do
       airport.permission_to_land(plane)
       expect(airport.planes_count).to eq(1)
       airport.permission_to_take_off(plane)
@@ -28,5 +28,19 @@ describe Airport do
 
   end
 
+  context "traffic control" do
+
+    it "knows when the airport is full" do
+      expect(airport).not_to be_full
+      fill_airport(airport)
+      expect(airport).to be_full
+    end
+
+
+    def fill_airport(airport)
+      airport.capacity.times { airport.permission_to_land(Plane.new) }
+    end
+
+  end
 
 end

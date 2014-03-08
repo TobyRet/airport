@@ -23,4 +23,9 @@ class Airport
   def permission_to_take_off(plane)
     planes.delete(plane)
   end
+
+  def full?
+    planes_count == @capacity
+  end
+
 end
