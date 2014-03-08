@@ -77,9 +77,7 @@ describe Airport do
       sunny
       expect(airport.planes_count).to eq(0)
       airport.permission_to_land(plane)
-      plane.land
       expect(airport.planes_count).to eq(1)
-      expect(plane.status).to eq(:landed)
     end
 
     def sunny
