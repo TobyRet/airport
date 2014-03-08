@@ -10,8 +10,12 @@ class Plane
     @is_flying = false
   end
 
-  def fly
+  def takeoff
     @is_flying = true
+  end
+
+  def land
+    @is_flying = false
   end
 
   def status

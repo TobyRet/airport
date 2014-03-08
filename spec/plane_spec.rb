@@ -1,4 +1,3 @@
-require './lib/weather'
 require './lib/plane'
 
 describe Plane do
@@ -10,9 +9,14 @@ describe Plane do
     expect(plane.is_flying).to be_false
   end
 
-  it "can fly" do
-    plane.fly
-    expect(plane.fly).to be_true
+  it "can takeoff" do
+    plane.takeoff
+    expect(plane.is_flying).to be_true
+  end
+
+  it "can land" do
+    plane.land
+    expect(plane.is_flying).to be_false
   end
 
   it "can provide its current status (flying or landed)" do

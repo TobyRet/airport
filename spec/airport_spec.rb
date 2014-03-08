@@ -11,4 +11,10 @@ describe Airport do
     expect(airport.capacity).to eq(100)
   end
 
+  xit "can check the weather conditions" do
+    weather = double(:weather)
+    expect(aiport.check_conditions(weather)).to eq(:sunny)
+
+  end
+
 end
