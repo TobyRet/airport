@@ -50,19 +50,44 @@ describe Airport do
 
   context "weather conditions" do
 
-    it "only lets a plane take off only in sunny weather conditions" do
-      allow(airport).to receive(:weather_conditions) { :sunny }
+    it "lets a plane take off only in sunny weather conditions" do
+      sunny
       airport.planes << plane
       expect(airport.planes_count).to eq(1)
       airport.permission_to_take_off(plane)
       expect(airport.planes_count).to eq(0)
     end
 
+    it "won't let a plane take off in stormy weather conditions" do
+      stormy
+      airport.planes << plane
+      expect(airport.planes_count).to eq(1)
+      airport.permission_to_take_off(plane)
+      expect(airport.planes_count).to eq(1)
+    end
+
     it "won't let a plane land in stormy conditions" do
-      allow(airport).to receive(:weather_conditions) { :stormy }
+      stormy
       expect(airport.planes_count).to eq(0)
       airport.permission_to_land(plane)
+      expect(airport.permission_to_land(plane)).to be_false
+    end
+
+    it "will let a plane land in sunny conditions" do
+      sunny
       expect(airport.planes_count).to eq(0)
+      airport.permission_to_land(plane)
+      plane.land
+      expect(airport.planes_count).to eq(1)
+      expect(plane.status).to eq(:landed)
+    end
+
+    def sunny
+      allow(airport).to receive(:weather_conditions) { :sunny }
+    end
+
+    def stormy
+      allow(airport).to receive(:weather_conditions) { :stormy }
     end
 
   end

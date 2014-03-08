@@ -3,10 +3,10 @@ class Plane
   attr_accessor :is_flying
 
   def initialize
-    @is_flying = false
+    @is_flying = true
   end
 
-  def takeoff
+  def take_off
     @is_flying = true
   end
 
