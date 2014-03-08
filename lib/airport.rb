@@ -17,6 +17,7 @@ class Airport
   end
 
   def permission_to_land(plane)
+    raise "Airport full. Permission to land denied." if full?
     planes << plane
   end
 

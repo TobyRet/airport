@@ -36,6 +36,10 @@ describe Airport do
       expect(airport).to be_full
     end
 
+    it "does not not let a plane land when the airport is full" do
+      fill_airport(airport)
+      expect { airport.permission_to_land(plane) }.to raise_error(RuntimeError)
+    end
 
     def fill_airport(airport)
       airport.capacity.times { airport.permission_to_land(Plane.new) }
