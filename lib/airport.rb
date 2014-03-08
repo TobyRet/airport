@@ -17,17 +17,6 @@ class Airport
   end
 
   def planes_count
-<<<<<<< HEAD
-    @planes.count
-  end
-
-  def dock(plane)
-    planes << plane
-  end
-
-  def undock(plane)
-    planes.delete(plane)
-=======
     planes.count
   end
 
@@ -42,7 +31,6 @@ class Airport
 
   def full?
     planes_count == @capacity
->>>>>>> refactor
   end
 
 end
