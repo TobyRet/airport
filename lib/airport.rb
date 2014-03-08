@@ -19,4 +19,8 @@ class Airport
   def permission_to_land(plane)
     planes << plane
   end
+
+  def permission_to_take_off(plane)
+    planes.delete(plane)
+  end
 end
