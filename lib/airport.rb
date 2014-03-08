@@ -22,7 +22,7 @@ class Airport
 
   def permission_to_land(plane)
     raise "Airport full. Permission to land denied." if full?
-    planes << plane
+    planes << plane if weather_conditions == :sunny
   end
 
   def permission_to_take_off(plane)

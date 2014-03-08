@@ -1,6 +1,7 @@
+require './lib/weather'
 require './lib/airport'
 require './lib/plane'
-require './lib/weather'
+
 
 describe Airport do 
 
@@ -13,13 +14,13 @@ describe Airport do
 
   context "taking off and landing" do 
   
-    it "a plane can land" do
+    xit "a plane can land" do
       expect(airport.planes_count).to eq(0)
       airport.permission_to_land(plane)
       expect(airport.planes_count).to eq(1)
     end
 
-    it "a plane can take off" do
+    xit "a plane can take off" do
       airport.permission_to_land(plane)
       expect(airport.planes_count).to eq(1)
       airport.permission_to_take_off(plane)
@@ -41,19 +42,28 @@ describe Airport do
       expect { airport.permission_to_land(plane) }.to raise_error(RuntimeError)
     end
 
+    def fill_airport(airport)
+      airport.capacity.times { airport.planes << plane }
+    end
+
+  end
+
+  context "weather conditions" do
+
     it "only lets a plane take off only in sunny weather conditions" do
-      weather = double :weather
-      allow(weather).to receive(:forecast) { :sunny }
-      expect(weather.forecast).to eq(:sunny)
-      weather_condition = weather.forecast
+      allow(airport).to receive(:weather_conditions) { :sunny }
+      airport.planes << plane
+      expect(airport.planes_count).to eq(1)
       airport.permission_to_take_off(plane)
       expect(airport.planes_count).to eq(0)
     end
 
-    def fill_airport(airport)
-      airport.capacity.times { airport.permission_to_land(Plane.new) }
+    it "won't let a plane land in stormy conditions" do
+      allow(airport).to receive(:weather_conditions) { :stormy }
+      expect(airport.planes_count).to eq(0)
+      airport.permission_to_land(plane)
+      expect(airport.planes_count).to eq(0)
     end
-
 
   end
 
