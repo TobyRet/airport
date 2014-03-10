@@ -81,11 +81,11 @@ describe Airport do
     end
 
     def sunny
-      airport.stub(:weather_conditions => :sunny)
+      airport.stub(:weather_conditions).and_return(:sunny)
     end
 
     def stormy
-      airport.stub(:weather_conditions => :stormy)
+      airport.stub(:weather_conditions).and_return(:stormy)
     end
 
   end
