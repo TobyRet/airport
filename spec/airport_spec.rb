@@ -81,11 +81,11 @@ describe Airport do
     end
 
     def sunny
-      allow(airport).to receive(:weather_conditions) { :sunny }
+      airport.stub(:weather_conditions => :sunny)
     end
 
     def stormy
-      allow(airport).to receive(:weather_conditions) { :stormy }
+      airport.stub(:weather_conditions => :stormy)
     end
 
   end
