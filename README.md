@@ -1,4 +1,4 @@
-Airport 
+Airport
 =======
 
 A program to control the flow of planes at an airport.
@@ -6,8 +6,12 @@ This is the Week 3 test at Makers Academy.
 
 ###Run
 
-In IRB 
+In IRB
 
-1. ```require './lib/plane.rb'``` 
+1. ```require './lib/plane.rb'```
 
 2. ```require './lib/airport.rb'```
+
+The plane doesn't land!
+
+# FAIL
