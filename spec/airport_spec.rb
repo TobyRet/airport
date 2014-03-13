@@ -3,7 +3,7 @@ require './lib/airport'
 require './lib/plane'
 
 
-describe Airport do 
+describe Airport do
 
   let(:airport) { Airport.new }
   let(:plane) { Plane.new }
@@ -12,19 +12,23 @@ describe Airport do
     expect(airport.capacity).to eq(100)
   end
 
-  context "taking off and landing" do 
-  
-    xit "a plane can land" do
+  context "taking off and landing" do
+
+    it "a plane can land" do
       expect(airport.planes_count).to eq(0)
       airport.permission_to_land(plane)
       expect(airport.planes_count).to eq(1)
+      expect(plane.is_flying).to be_false
     end
 
-    xit "a plane can take off" do
+    it "a plane can take off" do
       airport.permission_to_land(plane)
+      expect(plane.is_flying).to be_false
+      expect(plane.is_flying).to be_false
       expect(airport.planes_count).to eq(1)
       airport.permission_to_take_off(plane)
       expect(airport.planes_count).to eq(0)
+      expect(plane.is_flying).to be_true
     end
 
   end
