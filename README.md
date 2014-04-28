@@ -12,6 +12,4 @@ In IRB
 
 2. ```require './lib/airport.rb'```
 
-The plane doesn't land!
 
-# FAIL
